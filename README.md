@@ -12,8 +12,11 @@ have that element provide it via a `data-api-key` attribute.
 For example:
 
 ```html
-<div id="geocode-city-autocomplete" data-api-key="my-api-key">
-</div>
+<body>
+  <div id="geocode-city-autocomplete" data-api-key="my-api-key">
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/geocode-city/autocomplete@0.0.1.0/dist/geocode_city.min.js"></script>
+</body>
 ```
 
 The element would ideally be empty: the script replaces it with its

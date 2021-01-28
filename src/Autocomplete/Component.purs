@@ -65,6 +65,7 @@ component apiKey = S.component (const input) $ S.defaultSpec
           H.modify_ _
             { selection = Just item
             , search = ""
+            , visibility = S.Off
             }
           H.raise $ Selected newSelection  
     S.Searched str -> do
@@ -97,27 +98,6 @@ component apiKey = S.component (const input) $ S.defaultSpec
       [ renderInput, renderDropdown, renderContainer ]
     where
     hasSelection = isJust st.selection
-
-    -- renderSelections = whenElem hasSelections \_ ->
-    --   HH.div
-    --     [ class_ "geocode-city__autocomplete-selections" ]
-    --     (renderSelectedItem <$> st.selections)
-    --   where
-    --   renderSelectedItem item =
-    --     HH.div
-    --       [ class_ "geocode-city__autocompleteitem-selected geocode-city__city" ]
-    --       [ HH.span
-    --           [ class_ "geocode-city__city-name" ]
-    --           [ HH.text item.name ]
-    --       , closeButton item
-    --       ]
-
-    --   closeButton item =
-    --     HH.span
-    --       [ class_ "Location__closeButton"
-    --       , HE.onClick \_ -> Just $ S.Action $ Remove item
-    --       ]
-    --       [ HH.text "×" ]
 
     renderInput = HH.input $ SS.setInputProps
       [ classes_
