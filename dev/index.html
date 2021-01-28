@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>geocode.city</title>
+    <style>
+      .geocode-city__autocomplete-input {
+        width: 50vw
+      }
+    
+      .geocode-city__autocomplete-container {
+        border: 1px dotted gray;
+        border-radius: 1px;
+      }
+    
+      .geocode-city__autocomplete-item-highlighted {
+        background: lightblue;
+      }
+    
+      .geocode-city__city-location {
+        color: gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="geocode-city-autocomplete">
+      <input></input>
+    </div>
+    <script src="./index.js"></script>
+    <script>
+          let el = document.getElementById("geocode-city-autocomplete");
+        el.addEventListener("citySelected", function (e) {
+        console.log("from custom event");
+        console.log(e.detail);
+      });
+    </script>
+  </body>
+</html>
