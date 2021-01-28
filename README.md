@@ -27,3 +27,15 @@ information when the user selects a city option, and `lookupError`, if we
 get an error back from the server for any reason. Errors are displayed
 by the component by default, so you may only need to listen for this event
 if you need to do further error processing.
+
+### Bundling
+
+I distribute this project through [jsdelivr](https://www.jsdelivr.com/). See
+[NOTES](./NOTES.md) for development commands, but for production, we just run:
+
+```sh
+npm run bundle
+```
+
+And the `dist/geocode_city.js` file should be updated. Minification is offloaded
+to jsdelivr for the time being.

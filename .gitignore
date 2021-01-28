@@ -9,5 +9,6 @@
 /.psa*
 /.spago
 /.cache/
-/dist/
+/dist/**
+!dist/geocode_city.js
 /prod/*
