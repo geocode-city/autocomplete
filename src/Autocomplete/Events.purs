@@ -15,3 +15,9 @@ citySelected city = customEventC "citySelected" (encodeJson city)
 
 lookupError :: String -> CustomEvent
 lookupError errMsg = customEventC "lookupError" (encodeJson {message: errMsg})
+
+citiesFound :: Array City -> CustomEvent
+citiesFound cities = customEventC "citiesFound" (encodeJson cities)
+
+noCitiesFound :: CustomEvent
+noCitiesFound = customEventC "noCitiesFound" (encodeJson {message: "No results."})

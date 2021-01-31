@@ -8,12 +8,14 @@ import Affjax.ResponseFormat as AR
 import Affjax.StatusCode (StatusCode(..))
 import Data.Argonaut (decodeJson)
 import Data.Either (Either(..))
-import Data.Maybe (Maybe, maybe)
+import Data.Int (decimal, toStringAs)
+import Data.Maybe (Maybe, fromMaybe, maybe)
 import Data.String (null)
 import Effect.Aff (Aff)
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HP
 import Network.RemoteData as RD
+
 
 type City = {
   name :: String,
@@ -34,9 +36,9 @@ type City = {
 -- https://pursuit.purescript.org/packages/purescript-affjax/11.0.0
 -- https://pursuit.purescript.org/packages/purescript-argonaut-codecs/7.0.0
 -- https://github.com/citizennet/purescript-halogen-select/blob/v5.0.0/examples/Components/Typeahead.purs
-autocompleteCandidates :: Maybe String -> String -> Aff (RD.RemoteData String (Array City))
-autocompleteCandidates apiKey partialCity = do
-  res <- AX.get AR.json ("https://api.geocode.city/autocomplete" <> prefix <> "q=" <> partialCity)
+autocompleteCandidates :: String -> Maybe String -> Maybe Int -> Aff (RD.RemoteData String (Array City))
+autocompleteCandidates partialCity apiKey limit' = do
+  res <- AX.get AR.json ("https://api.geocode.city/autocomplete" <> prefix <> "q=" <> partialCity <> "&limit=" <> (toStringAs decimal limit))
   case res of
     Left err -> 
       case err of 
@@ -53,6 +55,7 @@ autocompleteCandidates apiKey partialCity = do
   where
     failed = pure <<< RD.Failure
     prefix = maybe "?" (\k -> "?api-key=" <> k <> "&") apiKey
+    limit  = fromMaybe 5 limit'
 
 
 -- | Given a `City`, return a suitable one-line representation
