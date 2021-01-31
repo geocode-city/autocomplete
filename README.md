@@ -15,7 +15,7 @@ For example:
 <body>
   <div id="geocode-city-autocomplete" data-api-key="my-api-key" data-suggestion-count="10">
   </div>
-<script src="https://cdn.jsdelivr.net/gh/geocode-city/autocomplete@0.1.0.0/dist/geocode_city.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/geocode-city/autocomplete@0.1.0.1/dist/geocode_city.min.js"></script>
 </body>
 ```
 
