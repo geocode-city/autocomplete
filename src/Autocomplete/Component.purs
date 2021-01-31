@@ -127,6 +127,9 @@ component = S.component input $ S.defaultSpec
       , HP.name $ fromMaybe "" st.config.inputName
       , HP.placeholder "Type to search..."
       , HP.value $ maybe "" cityString st.selection
+      , HP.autocomplete false
+      , HP.spellcheck false
+      , HP.type_  HP.InputSearch
       ]
 
     renderPoweredBy =
